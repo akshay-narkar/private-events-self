@@ -13,8 +13,6 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
-  def index; end
-
   private
 
   def paramas_new
