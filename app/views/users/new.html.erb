@@ -1,24 +1,25 @@
-<h2>Log In</h2>
+<h1>Sign Up</h1>
 
-<%= simple_form_for :newuser, url: users_path do |x| %>
-<%= x.label :username %>
-<%= x.text_field :title%>
-<br>
-<br>
-<%= x.label :name %>
-<%= x.text_field :text%>
-<br><br>
 
-<%= x.label :email %>
-<%= x.text_field :text%>
-<br><br>
+<%= form_for :@user123 , url: users_path do |x| %>
+<p>
+    Username:
+    <%= x.text_field :username%>
+</p>
+<p>
+    Name:
+    <%= x.text_field :name%>
+</p>
+<p>
+    Email:
+    <%= x.text_field :email%>
+</p>
 
-<%= x.label :password %>
-<%= x.password_field :string%>
-<br><br>
-
-<%= x.submit  "Save" %>
-</div>
+<p>
+    Password:
+    <%= x.password_field :password%>
+</p>
+<p>
+    <%= x.submit 'Save' %>
+</p>
 <% end %>
-<br>
-<%= link_to 'Blog', users_path %> | <%= link_to 'Home Page'%>

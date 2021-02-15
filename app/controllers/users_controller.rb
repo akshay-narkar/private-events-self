@@ -1,21 +1,29 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+    def new
+        @user = User.new
+    end
 
-  def create
-    @user = User.new(paramas_new)
-    @user.save!
-    redirect to root_path
-  end
+    def create
+        @user = User.new(params_new)
+        
+        if @user.save
+             redirect_to user_path(@user[:id])
+        else
+            render :new
+        end
+      end
+    
+    def show
+        @user = User.find(params[:id])
+        @events = Event.all
+    end 
 
-  def show
-    @user = User.all
-  end
+    
+    private 
 
-  private
+    def params_new
+        params.require(:@user123).permit(:username, :name, :email, :password)
+    end
 
-  def paramas_new
-    params.require(:user).permit(:name, :username, :email, :password)
-  end
 end
+
