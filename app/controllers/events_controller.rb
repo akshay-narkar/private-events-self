@@ -8,18 +8,16 @@ class EventsController < ApplicationController
          @events = Event.all
     end
 
-    def create
+    def create                     1
         @user = User.find_by_id(session[:user_id])
         @event = @user.events.build(event_params) 
         # render plain: @event
 
         if @event.save
             redirect_to root_path
-        
-
-    else
-        render :new
-    end
+        else
+            render :new
+        end
         # render plain: event_params
     #    @event = @user.events.build(event_params) 
         # if @event
@@ -30,7 +28,7 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = Event.find_by_crea(params[:id])
+        @event = Event.find_by(params[:id])
     end
 
 private 

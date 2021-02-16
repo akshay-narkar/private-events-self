@@ -28,8 +28,8 @@ class SessionsController < ApplicationController
 
     def destroy
 
-       session[:user_id] = nil
-    #    reset_session
+    #    session[:user_id] = nil
+       reset_session
         # render plain: x
         # render  plain: session if session[:id] == params[:id]
         # render plain: params[:id]

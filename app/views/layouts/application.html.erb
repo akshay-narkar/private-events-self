@@ -21,7 +21,9 @@
 
 
     <%else%>
-    <%= render plain: "Welcome " + (User.find_by_id(session[:user_id])).name %> | <%= link_to 'Logout', session_path("x"), method: :delete%> | <%=link_to 'Create Event', new_event_path%>
+
+    <% @x = User.find_by_id(session[:user_id]) %>
+    <%= render plain: "Welcome "%> <%= link_to @x.name,@x %> | <%= link_to 'Logout', session_path("x"), method: :delete%> | <%=link_to 'Create Event', new_event_path%>
 
     <%
 =begin%>
