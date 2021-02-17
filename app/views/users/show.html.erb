@@ -1,28 +1,26 @@
 <p><%= @user.name %> | <%=@user.email%> </p>
 
-<h1> Events Hosted </h1>
+<h1> Events Attended </h1>
 
 
 <table>
     <thead>
         <tr>
-            <th>Upcoming Events</th>
-            <th style='padding-left:25px'>Event Date</th>
-            <th style='padding-left:25px'>Link</th>
+
+            <p>
+                <th style='padding-bottom: 15px'>Upcoming Events</th>
+            </p>
         </tr>
     </thead>
 
     <tbody>
 
 
-
         <% @events.each do |x| %>
-        <% if (x.eventdate - Date.today > 0) %>
+        <% if ((Event.find_by_id(x.attended_event_id)).eventdate - Date.today > 0) %>
         <tr>
-            <td><%= x.description %></td>
-            <td style='padding-left:25px'><%= x.eventdate.strftime(' %d-%m-%Y') %></td>
-            <td style='padding-left:25px'><%= link_to 'Show', x %></td>
 
+            <td> <%=  (Event.find_by_id(x.attended_event_id)).description%> </td>
         </tr>
         <%end%>
 
@@ -36,9 +34,7 @@
 <table>
     <thead>
         <tr>
-            <th>Past Events</th>
-            <th style='padding-left:25px'>Event Date</th>
-            <th style='padding-left:25px'>Link</th>
+            <th <th style='padding-bottom: 15px'>Past Events</th>
         </tr>
     </thead>
 
@@ -47,13 +43,11 @@
 
 
         <% @events.each do |x| %>
-        <% if (x.eventdate - Date.today <= 0) %>
+        <% if ((Event.find_by_id(x.attended_event_id)).eventdate  - Date.today <= 0) %>
         <tr>
-            <td><%= x.description %></td>
-            <td style='padding-left:25px'><%= x.eventdate.strftime(' %d-%m-%Y') %></td>
-            <td style='padding-left:25px'><%= link_to 'Show', x %></td>
-
+            <td> <%=  (Event.find_by_id(x.attended_event_id)).description%> </td>
         </tr>
+
         <%end%>
 
         <%end%>

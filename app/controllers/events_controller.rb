@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def create
     @user = User.find_by_id(session[:user_id])
     @event = @user.events.build(event_params)
-    # render plain: @event
 
     if @event.save
       redirect_to root_path
@@ -28,6 +27,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    @attended = @event.attendances.all
   end
 
   private
