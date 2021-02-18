@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @eventspast = Event.past
+   @eventsupcoming = Event.upcoming
   end
 
   def create
@@ -16,13 +17,7 @@ class EventsController < ApplicationController
     else
       render :new
     end
-    # render plain: event_params
-    #    @event = @user.events.build(event_params)
-    # if @event
-    #     redirect_to root_path
-    # else
-    #     render :new
-    # @event = Event.new(event_params)
+  
   end
 
   def show
